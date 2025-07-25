@@ -102,7 +102,7 @@ chapter_chart = alt.Chart(
     x=alt.X('Registrants:Q', title='Total Registrants'),
     y=alt.Y('Chapter/Club/Group:N', sort='-x', title='Chapter/Group', axis=alt.Axis(labelLimit=1000, labelAngle=0)),
     tooltip=['Chapter/Club/Group', 'Registrants']
-).properties(height=775)
+).properties(height=785)
 
 st.altair_chart(chapter_chart, use_container_width=True)
 
