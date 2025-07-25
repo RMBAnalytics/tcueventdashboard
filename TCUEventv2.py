@@ -100,7 +100,7 @@ chapter_chart = alt.Chart(
     filtered_df.groupby('Chapter/Club/Group')['Registrants'].sum().reset_index()
 ).mark_bar(size=12).encode(
     x=alt.X('Registrants:Q', title='Total Registrants'),
-    y=alt.Y('Chapter/Club/Group:N', sort='-x', title='Chapter/Group', axis=alt.Axis(labelLimit=300)),
+    y=alt.Y('Chapter/Club/Group:N', sort='-x', title='Chapter/Group', axis=alt.Axis(labelLimit=None)),
     tooltip=['Chapter/Club/Group', 'Registrants']
 ).properties(height=600)
 
