@@ -22,6 +22,9 @@ st.markdown("""
     .stDataFrame th, .stDataFrame td {
         color: black !important;
     }
+    .metric-label, .metric-value {
+        color: white !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -63,9 +66,12 @@ total_events = len(filtered_df)
 st.title("FY25 Event Registration Dashboard")
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Total Registrants", total_registrants)
-col2.metric("Known Registrants", total_known)
-col3.metric("Number of Events", total_events)
+with col1:
+    st.markdown(f"<h3 style='color:white;'>Total Registrants</h3><h2 style='color:white;'>{total_registrants}</h2>", unsafe_allow_html=True)
+with col2:
+    st.markdown(f"<h3 style='color:white;'>Known Registrants</h3><h2 style='color:white;'>{total_known}</h2>", unsafe_allow_html=True)
+with col3:
+    st.markdown(f"<h3 style='color:white;'>Number of Events</h3><h2 style='color:white;'>{total_events}</h2>", unsafe_allow_html=True)
 
 # Charts
 st.subheader("Registrants by Chapter/Group")
@@ -92,3 +98,4 @@ st.altair_chart(type_chart, use_container_width=True)
 
 st.subheader("Event Table")
 st.dataframe(filtered_df.sort_values(by='Event start date'))
+
