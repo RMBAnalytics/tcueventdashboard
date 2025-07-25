@@ -25,6 +25,16 @@ st.markdown("""
     .metric-label, .metric-value {
         color: white !important;
     }
+    .metric-box {
+        text-align: center;
+        padding: 1rem;
+        background-color: transparent;
+    }
+    .metric-box h3, .metric-box h2 {
+        margin: 0;
+        padding: 0;
+        color: white;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -67,11 +77,20 @@ st.title("FY25 Event Registration Dashboard")
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.markdown(f"<h3 style='color:white;'>Total Registrants</h3><h2 style='color:white;'>{total_registrants}</h2>", unsafe_allow_html=True)
+    st.markdown(f"""<div class='metric-box'>
+        <h3>Total Registrants</h3>
+        <h2>{total_registrants}</h2>
+    </div>""", unsafe_allow_html=True)
 with col2:
-    st.markdown(f"<h3 style='color:white;'>Known Registrants</h3><h2 style='color:white;'>{total_known}</h2>", unsafe_allow_html=True)
+    st.markdown(f"""<div class='metric-box'>
+        <h3>Known Registrants</h3>
+        <h2>{total_known}</h2>
+    </div>""", unsafe_allow_html=True)
 with col3:
-    st.markdown(f"<h3 style='color:white;'>Number of Events</h3><h2 style='color:white;'>{total_events}</h2>", unsafe_allow_html=True)
+    st.markdown(f"""<div class='metric-box'>
+        <h3>Number of Events</h3>
+        <h2>{total_events}</h2>
+    </div>""", unsafe_allow_html=True)
 
 # Charts
 st.subheader("Registrants by Chapter/Group")
@@ -98,4 +117,5 @@ st.altair_chart(type_chart, use_container_width=True)
 
 st.subheader("Event Table")
 st.dataframe(filtered_df.sort_values(by='Event start date'))
+
 
