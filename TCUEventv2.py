@@ -58,11 +58,11 @@ st.sidebar.subheader("Filters")
 
 # One-click toggle for chapter selection
 if st.sidebar.button("Select All Chapters/Groups"):
-    selected_chapters = df['Chapter/Club/Group'].unique().tolist()
+    selected_chapters = sorted(df['Chapter/Club/Group'].unique()).tolist()
 else:
     selected_chapters = st.sidebar.multiselect("Select Chapters/Groups", df['Chapter/Club/Group'].unique())
 
-selected_types = st.sidebar.multiselect("Select Event Types", df['Event Type'].unique(), default=list(df['Event Type'].unique()))
+selected_types = st.sidebar.multiselect("Select Event Types", sorted(df['Event Type'].unique()), default=list(df['Event Type'].unique()))
 paid_only = st.sidebar.checkbox("Show Only Paid Events", value=False)
 
 filtered_df = df[df['Chapter/Club/Group'].isin(selected_chapters) if selected_chapters else df['Chapter/Club/Group'].notnull()]
