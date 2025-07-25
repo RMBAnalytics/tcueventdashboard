@@ -122,10 +122,12 @@ st.markdown("""
     <style>
     .scrollable-table-container {
         max-height: 500px;
-        overflow-y: scroll;
+        overflow-y: auto;
+        overflow-x: auto;
         border: 1px solid #ccc;
         padding: 5px;
         background-color: white;
+        white-space: nowrap;
     }
     </style>
 """, unsafe_allow_html=True)
