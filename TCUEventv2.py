@@ -43,8 +43,8 @@ logo_path = "tcu_logo.png"
 try:
     logo = Image.open(logo_path)
     st.markdown("""<div style='text-align:center;'>""", unsafe_allow_html=True)
-st.image(logo, use_column_width=True)
-st.markdown("""</div>""", unsafe_allow_html=True)
+    st.image(logo, use_column_width=True)
+    st.markdown("""</div>""", unsafe_allow_html=True)
 except:
     st.warning("Logo not found: please add 'tcu_logo.png' to the project directory.")
 
@@ -119,6 +119,7 @@ st.altair_chart(type_chart, use_container_width=True)
 
 st.subheader("Event Table")
 st.dataframe(filtered_df.sort_values(by='Event start date'))
+
 
 
 
