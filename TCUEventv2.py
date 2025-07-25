@@ -118,4 +118,17 @@ type_chart = alt.Chart(
 st.altair_chart(type_chart, use_container_width=True)
 
 st.subheader("Event Table")
+st.markdown("""
+    <style>
+    .scrollable-table-container {
+        max-height: 500px;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        padding: 5px;
+        background-color: white;
+    }
+    </style>
+""", unsafe_allow_html=True)
+st.markdown("<div class='scrollable-table-container'>", unsafe_allow_html=True)
 st.dataframe(filtered_df.sort_values(by='Event start date'))
+st.markdown("</div>", unsafe_allow_html=True)
