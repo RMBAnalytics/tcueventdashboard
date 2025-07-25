@@ -98,22 +98,22 @@ with col3:
 st.subheader("Registrants by Chapter/Group")
 chapter_chart = alt.Chart(
     filtered_df.groupby('Chapter/Club/Group')['Registrants'].sum().reset_index()
-).mark_bar().encode(
+).mark_bar(size=20).encode(
     x=alt.X('Registrants:Q', title='Total Registrants'),
     y=alt.Y('Chapter/Club/Group:N', sort='-x', title='Chapter/Group'),
     tooltip=['Chapter/Club/Group', 'Registrants']
-).properties(height=400)
+).properties(height=600)
 
 st.altair_chart(chapter_chart, use_container_width=True)
 
 st.subheader("Registrants by Event Type")
 type_chart = alt.Chart(
     filtered_df.groupby('Event Type')['Registrants'].sum().reset_index()
-).mark_bar().encode(
+).mark_bar(size=30).encode(
     x=alt.X('Registrants:Q', title='Total Registrants'),
     y=alt.Y('Event Type:N', sort='-x'),
     tooltip=['Event Type', 'Registrants']
-).properties(height=300)
+).properties(height=400)
 
 st.altair_chart(type_chart, use_container_width=True)
 
