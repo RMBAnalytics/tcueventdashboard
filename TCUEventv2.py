@@ -15,10 +15,6 @@ st.markdown("""
         background-color: #4D1979;
         color: white;
     }
-    .css-1d391kg, .css-1v0mbdj, .st-af, .st-ag, .st-ah, .st-ai {
-        background-color: #4D1979 !important;
-        color: white !important;
-    }
     .stDataFrame th, .stDataFrame td {
         color: black !important;
     }
