@@ -65,7 +65,13 @@ elif chapter_buttons == "Unselect All":
 else:
     selected_chapters = st.sidebar.multiselect("Select Chapters/Groups", sorted(df['Chapter/Club/Group'].unique()))
 
-selected_types = st.sidebar.multiselect("Select Event Types", sorted(df['Event Type'].unique()), default=sorted(df['Event Type'].unique()))
+event_type_buttons = st.sidebar.radio("Event Type Selection", ["Custom Select", "Select All", "Unselect All"], index=0)
+if event_type_buttons == "Select All":
+    selected_types = list(sorted(df['Event Type'].dropna().unique()))
+elif event_type_buttons == "Unselect All":
+    selected_types = []
+else:
+    selected_types = st.sidebar.multiselect("Select Event Types", sorted(df['Event Type'].unique()), default=sorted(df['Event Type'].unique()))
 paid_only = st.sidebar.checkbox("Show Only Paid Events", value=False)
 
 filtered_df = df[df['Chapter/Club/Group'].isin(selected_chapters) if selected_chapters else df['Chapter/Club/Group'].notnull()]
