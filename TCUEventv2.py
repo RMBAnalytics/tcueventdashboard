@@ -58,7 +58,7 @@ st.sidebar.subheader("Filters")
 
 # One-click toggle for chapter selection
 if st.sidebar.button("Select All Chapters/Groups"):
-    selected_chapters = sorted(df['Chapter/Club/Group'].unique()).tolist()
+    selected_chapters = list(sorted(df['Chapter/Club/Group'].dropna().unique()))
 else:
     selected_chapters = st.sidebar.multiselect("Select Chapters/Groups", sorted(df['Chapter/Club/Group'].unique()))
 
