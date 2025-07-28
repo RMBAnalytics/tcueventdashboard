@@ -57,8 +57,11 @@ df['Paid'] = df['Paid'].map({'Yes': True, 'No': False})
 st.sidebar.subheader("Filters")
 
 # One-click toggle for chapter selection
-if st.sidebar.button("Select All Chapters/Groups"):
+chapter_buttons = st.sidebar.radio("Chapter Selection", ["Custom Select", "Select All", "Unselect All"], index=0)
+if chapter_buttons == "Select All":
     selected_chapters = list(sorted(df['Chapter/Club/Group'].dropna().unique()))
+elif chapter_buttons == "Unselect All":
+    selected_chapters = []
 else:
     selected_chapters = st.sidebar.multiselect("Select Chapters/Groups", sorted(df['Chapter/Club/Group'].unique()))
 
